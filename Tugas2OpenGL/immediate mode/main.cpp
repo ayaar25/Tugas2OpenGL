@@ -30,173 +30,151 @@ void initGL() {
 /* Handler for window-repaint event. Call back when the window first appears and
  whenever the window needs to be re-painted. */
 void display() {
-    glClear(GL_COLOR_BUFFER_BIT);   // Clear the color buffer with current clearing color
     
-    // Define shapes enclosed within a pair of glBegin and glEnd
-//    glBegin(GL_QUADS);              // Each set of 4 vertices form a quad
-//    glColor3f(1.0f, 0.0f, 0.0f); // Red
-//    glVertex2f(-0.8f, 0.1f);     // Define vertices in counter-clockwise (CCW) order
-//    glVertex2f(-0.2f, 0.1f);     //  so that the normal (front-face) is facing you
-//    glVertex2f(-0.2f, 0.7f);
-//    glVertex2f(-0.8f, 0.7f);
-//    
-//    glColor3f(0.0f, 1.0f, 0.0f); // Green
-//    glVertex2f(-0.7f, -0.6f);
-//    glVertex2f(-0.1f, -0.6f);
-//    glVertex2f(-0.1f,  0.0f);
-//    glVertex2f(-0.7f,  0.0f);
-//    
-//    glColor3f(0.2f, 0.2f, 0.2f); // Dark Gray
-//    glVertex2f(-0.9f, -0.7f);
-//    glColor3f(1.0f, 1.0f, 1.0f); // White
-//    glVertex2f(-0.5f, -0.7f);
-//    glColor3f(0.2f, 0.2f, 0.2f); // Dark Gray
-//    glVertex2f(-0.5f, -0.3f);
-//    glColor3f(1.0f, 1.0f, 1.0f); // White
-//    glVertex2f(-0.9f, -0.3f);
-//    glEnd();
-//    
-//    glBegin(GL_TRIANGLES);          // Each set of 3 vertices form a triangle
-//    glColor3f(0.0f, 0.0f, 1.0f); // Blue
-//    glVertex2f(0.1f, -0.6f);
-//    glVertex2f(0.7f, -0.6f);
-//    glVertex2f(0.4f, -0.1f);
-//    
-//    glColor3f(1.0f, 0.0f, 0.0f); // Red
-//    glVertex2f(0.3f, -0.4f);
-//    glColor3f(0.0f, 1.0f, 0.0f); // Green
-//    glVertex2f(0.9f, -0.4f);
-//    glColor3f(0.0f, 0.0f, 1.0f); // Blue
-//    glVertex2f(0.6f, -0.9f);
-//    glEnd();
-//    
-//    glBegin(GL_POLYGON);            // These vertices form a closed polygon
-//    glColor3f(1.0f, 1.0f, 0.0f); // Yellow
-//    glVertex2f(0.4f, 0.2f);
-//    glVertex2f(0.6f, 0.2f);
-//    glVertex2f(0.7f, 0.4f);
-//    glVertex2f(0.6f, 0.6f);
-//    glVertex2f(0.4f, 0.6f);
-//    glVertex2f(0.3f, 0.4f);
-//    glEnd();
-    
-    glBegin(GL_QUADS);
-    glColor3f(0.329412f, 0.329412f, 0.329412f);
-    glVertex2f(-1.0f, -1.0f);
-    glVertex2f(1.0f, -1.0f);
-    glVertex2f(1.0f, -0.6f);
-    glVertex2f(-1.0f, -0.6f);
-    glEnd();
-    
-    glBegin(GL_QUADS);
-    glColor3f(1.0f, 1.0f, 0.0f);
-    glVertex2f(-1.0f, -0.6f);
-    glVertex2f(-1.0f, 0.4f);
-    glVertex2f(-0.8f, 0.4f);
-    glVertex2f(-0.8f, -0.6f);
-    glEnd();
-    
-    glBegin(GL_QUADS);
-    glColor3f(1.0f, 1.0f, 0.0f);
-    glVertex2f(-0.8f, -0.6f);
-    glVertex2f(-0.8f, 0.3f);
-    glVertex2f(-0.7f, 0.3f);
-    glVertex2f(-0.7f, -0.6f);
-    glEnd();
-    
-    glBegin(GL_QUADS);
-    glColor3f(1.0f, 1.0f, 0.0f);
-    glVertex2f(-0.7f, -0.6f);
-    glVertex2f(-0.7f, 0.6f);
-    glVertex2f(-0.5f, 0.8f);
-    glVertex2f(-0.5f, -0.6f);
-    glEnd();
-    
-    glBegin(GL_QUADS);
-    glColor3f(1.0f, 1.0f, 0.0f);
-    glVertex2f(-0.5f, -0.6f);
-    glVertex2f(-0.5f, 0.2f);
-    glVertex2f(-0.4f, 0.2f);
-    glVertex2f(-0.4f, -0.6f);
-    glEnd();
-    
-    glBegin(GL_QUADS);
-    glColor3f(1.0f, 1.0f, 0.0f);
-    glVertex2f(-0.4f, -0.6f);
-    glVertex2f(-0.4f, 0.6f);
-    glVertex2f(-0.2f, 0.6f);
-    glVertex2f(-0.2f, -0.6f);
-    glEnd();
-    
-    glBegin(GL_QUADS);
-    glColor3f(1.0f, 1.0f, 0.0f);
-    glVertex2f(-0.2f, -0.6f);
-    glVertex2f(-0.2f, 0.8f);
-    glVertex2f(0.0f, 0.6f);
-    glVertex2f(0.0f, -0.6f);
-    glEnd();
-    
-    glBegin(GL_QUADS);
-    glColor3f(1.0f, 1.0f, 0.0f);
-    glVertex2f(0.0f, -0.6f);
-    glVertex2f(0.0f, 0.4f);
-    glVertex2f(0.2f, 0.4f);
-    glVertex2f(0.2f, -0.6f);
-    glEnd();
-    
-    glBegin(GL_QUADS);
-    glColor3f(1.0f, 1.0f, 0.0f);
-    glVertex2f(0.2f, -0.6f);
-    glVertex2f(0.2f, 0.8f);
-    glVertex2f(0.5f, 0.8f);
-    glVertex2f(0.5f, -0.6f);
-    glEnd();
-    
-    glBegin(GL_QUADS);
-    glColor3f(1.0f, 1.0f, 0.0f);
-    glVertex2f(0.5f, -0.6f);
-    glVertex2f(0.5f, 0.7f);
-    glVertex2f(0.6f, 0.7f);
-    glVertex2f(0.6f, -0.6f);
-    glEnd();
-    
-    glBegin(GL_QUADS);
-    glColor3f(1.0f, 1.0f, 0.0f);
-    glVertex2f(0.6f, -0.6f);
-    glVertex2f(0.6f, 0.9f);
-    glVertex2f(0.8f, 0.8f);
-    glVertex2f(0.8f, -0.6f);
-    glEnd();
-    
-    glBegin(GL_QUADS);
-    glColor3f(1.0f, 1.0f, 0.0f);
-    glVertex2f(0.8f, -0.6f);
-    glVertex2f(0.8f, 0.6f);
-    glVertex2f(1.0f, 0.6f);
-    glVertex2f(1.0f, -0.6f);
-    glEnd();
-    
-    DrawCircle(0.0f,1.0f,1.0f,-1.58f,0.16f,0.3f,-0.4f,-0.6f);
-    
-    DrawCircle(0.0f,1.0f,1.0f,0.0f,1.61f,0.3f,0.4f,-0.6f);
-    
-    DrawCircle(0.0f,1.0f,1.0f,-1.58f,1.8f,0.4f,0.0f,-0.3f);
-    
-    glBegin(GL_QUADS);
-    glColor3f(0.0f, 1.0f, 1.0f);
-    glVertex2f(-0.4f, -0.6f);
-    glVertex2f(-0.4f, -0.3f);
-    glVertex2f(0.4f, -0.3f);
-    glVertex2f(0.4f, -0.6f);
-    glEnd();
-    
-    DrawCircle(0.0f,0.0f,0.0f,1.0f,360.1f,0.15f,-0.4f,-0.6f);
-    
-    DrawCircle(0.0f,0.0f,0.0f,1.0f,360.1f,0.15f,0.4f,-0.6f);
-    
-    
-    
-    glFlush();  // Render now
+	glClearColor(0.73, 0.87, 0.98, 1);  // (In fact, this is the default.)
+	glClear(GL_COLOR_BUFFER_BIT);
+
+	glBegin(GL_QUADS);
+	glColor3f(0.7, 0.7, 0.7);
+	glVertex2f(-1.0f, -1.0f);
+	glVertex2f(1.0f, -1.0f);
+	glVertex2f(1.0f, -0.6f);
+	glVertex2f(-1.0f, -0.6f);
+	glEnd();
+
+	glBegin(GL_QUADS);
+	glColor3f(0.95, 0.95, 0.95);
+	glVertex2f(-1.0f, -0.6f);
+	glVertex2f(-1.0f, 0.4f);
+	glVertex2f(-0.8f, 0.4f);
+	glVertex2f(-0.8f, -0.6f);
+	glEnd();
+
+	glBegin(GL_QUADS);
+	glColor3f(0.95, 0.95, 0.95);
+	glVertex2f(-0.8f, -0.6f);
+	glVertex2f(-0.8f, 0.3f);
+	glVertex2f(-0.7f, 0.3f);
+	glVertex2f(-0.7f, -0.6f);
+	glEnd();
+
+	glBegin(GL_QUADS);
+	glColor3f(0.95, 0.95, 0.95);
+	glVertex2f(-0.7f, -0.6f);
+	glVertex2f(-0.7f, 0.6f);
+	glVertex2f(-0.5f, 0.8f);
+	glVertex2f(-0.5f, -0.6f);
+	glEnd();
+
+	glBegin(GL_QUADS);
+	glColor3f(0.95, 0.95, 0.95);
+	glVertex2f(-0.5f, -0.6f);
+	glVertex2f(-0.5f, 0.2f);
+	glVertex2f(-0.4f, 0.2f);
+	glVertex2f(-0.4f, -0.6f);
+	glEnd();
+
+	glBegin(GL_QUADS);
+	glColor3f(0.95, 0.95, 0.95);
+	glVertex2f(-0.4f, -0.6f);
+	glVertex2f(-0.4f, 0.6f);
+	glVertex2f(-0.2f, 0.6f);
+	glVertex2f(-0.2f, -0.6f);
+	glEnd();
+
+	glBegin(GL_QUADS);
+	glColor3f(0.95, 0.95, 0.95);
+	glVertex2f(-0.2f, -0.6f);
+	glVertex2f(-0.2f, 0.8f);
+	glVertex2f(0.0f, 0.6f);
+	glVertex2f(0.0f, -0.6f);
+	glEnd();
+
+	glBegin(GL_QUADS);
+	glColor3f(0.95, 0.95, 0.95);
+	glVertex2f(0.0f, -0.6f);
+	glVertex2f(0.0f, 0.4f);
+	glVertex2f(0.2f, 0.4f);
+	glVertex2f(0.2f, -0.6f);
+	glEnd();
+
+	glBegin(GL_QUADS);
+	glColor3f(0.95, 0.95, 0.95);
+	glVertex2f(0.2f, -0.6f);
+	glVertex2f(0.2f, 0.8f);
+	glVertex2f(0.5f, 0.8f);
+	glVertex2f(0.5f, -0.6f);
+	glEnd();
+
+	glBegin(GL_QUADS);
+	glColor3f(0.95, 0.95, 0.95);
+	glVertex2f(0.5f, -0.6f);
+	glVertex2f(0.5f, 0.7f);
+	glVertex2f(0.6f, 0.7f);
+	glVertex2f(0.6f, -0.6f);
+	glEnd();
+
+	glBegin(GL_QUADS);
+	glColor3f(0.95, 0.95, 0.95);
+	glVertex2f(0.6f, -0.6f);
+	glVertex2f(0.6f, 0.9f);
+	glVertex2f(0.8f, 0.8f);
+	glVertex2f(0.8f, -0.6f);
+	glEnd();
+
+	glBegin(GL_QUADS);
+	glColor3f(0.95, 0.95, 0.95);
+	glVertex2f(0.8f, -0.6f);
+	glVertex2f(0.8f, 0.6f);
+	glVertex2f(1.0f, 0.6f);
+	glVertex2f(1.0f, -0.6f);
+	glEnd();
+
+	DrawCircle(0.0f, 1.0f, 1.0f, -1.58f, 0.16f, 0.3f, -0.4f, -0.6f);
+
+	DrawCircle(0.0f, 1.0f, 1.0f, 0.0f, 1.61f, 0.3f, 0.4f, -0.6f);
+
+	DrawCircle(0.0f, 1.0f, 1.0f, -1.58f, 1.8f, 0.4f, 0.0f, -0.3f);
+
+	glBegin(GL_QUADS);
+	glColor3f(0.0f, 1.0f, 1.0f);
+	glVertex2f(-0.4f, -0.6f);
+	glVertex2f(-0.4f, -0.3f);
+	glVertex2f(0.4f, -0.3f);
+	glVertex2f(0.4f, -0.6f);
+
+	float leftest = -0.9;
+	float uppest = -0.8;
+	float patternWidth = 0.3;
+	float patternHeight = 0.1;
+
+	while (leftest < 1) {
+		if ((leftest + 0.1) < 1) {
+			glColor3f(1, 1, 1);
+			glVertex2f(leftest, uppest);
+			glVertex2f(leftest + patternWidth, uppest);
+			glVertex2f(leftest + patternWidth, uppest - patternHeight);
+			glVertex2f(leftest, uppest - patternHeight);
+		}
+		else {
+			glColor3f(1, 1, 1);
+			glVertex2f(leftest, uppest);
+			glVertex2f(1, uppest);
+			glVertex2f(1, uppest - patternHeight);
+			glVertex2f(leftest, uppest - patternHeight);
+		}
+		leftest = leftest + 0.4;
+	}
+
+
+	glEnd();
+
+	DrawCircle(0.0f, 0.0f, 0.0f, 1.0f, 360.1f, 0.15f, -0.4f, -0.6f);
+
+	DrawCircle(0.0f, 0.0f, 0.0f, 1.0f, 360.1f, 0.15f, 0.4f, -0.6f);
+
+	glutSwapBuffers(); // Required to copy color buffer onto the screen.
+
 }
 
 /* Main function: GLUT runs as a console application starting at main()  */
