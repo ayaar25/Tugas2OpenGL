@@ -143,6 +143,7 @@ void road() {
 	float patternHeight = 0.1;
 
 	while (leftest < 1) {
+		glBegin(GL_QUADS);
 		if ((leftest + 0.1) < 1) {
 			glColor3f(1, 1, 1);
 			glVertex2f(leftest, uppest);
@@ -157,6 +158,7 @@ void road() {
 			glVertex2f(1, uppest - patternHeight);
 			glVertex2f(leftest, uppest - patternHeight);
 		}
+		glEnd();
 		leftest = leftest + 0.4;
 	}
 
