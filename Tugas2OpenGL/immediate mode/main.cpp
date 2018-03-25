@@ -1,46 +1,36 @@
-#include <OpenGL/gl.h>
+#include <GL/gl.h>
+#include <GL/glut.h>   // freeglut.h might be a better alternative, if available.
 #include <math.h>
-#include <GLUT/glut.h>   // freeglut.h might be a better alternative, if available.
 
 void DrawCircle(float red, float green, float blue, float startangle, float finishangle, float r, float x1, float y1)
 {
-    float x2,y2;
-    float angle;
-    
-    glBegin(GL_TRIANGLE_FAN);
-    glColor3f(red, green, blue);
-    glVertex2f(x1,y1);
-    
-    for (angle=startangle;angle<finishangle;angle+=0.2)
-    {
-        x2 = x1+sin(angle)*r;
-        y2 = y1+cos(angle)*r;
-        glVertex2f(x2,y2);
-    }
-    
-    glEnd();
+	float x2, y2;
+	float angle;
+
+	glBegin(GL_TRIANGLE_FAN);
+	glColor3f(red, green, blue);
+	glVertex2f(x1, y1);
+
+	for (angle = startangle;angle<finishangle;angle += 0.2)
+	{
+		x2 = x1 + sin(angle)*r;
+		y2 = y1 + cos(angle)*r;
+		glVertex2f(x2, y2);
+	}
+
+	glEnd();
 }
 
-/* Initialize OpenGL Graphics */
-void initGL() {
-    // Set "clearing" or background color
-    glClearColor(0.0f, 0.0f, 0.0f, 1.0f); // Black and opaque
-}
+void sky() {  // Display function will draw the image.
 
-/* Handler for window-repaint event. Call back when the window first appears and
- whenever the window needs to be re-painted. */
-void display() {
-    
 	glClearColor(0.73, 0.87, 0.98, 1);  // (In fact, this is the default.)
 	glClear(GL_COLOR_BUFFER_BIT);
 
-	glBegin(GL_QUADS);
-	glColor3f(0.7, 0.7, 0.7);
-	glVertex2f(-1.0f, -1.0f);
-	glVertex2f(1.0f, -1.0f);
-	glVertex2f(1.0f, -0.6f);
-	glVertex2f(-1.0f, -0.6f);
-	glEnd();
+	glutSwapBuffers(); // Required to copy color buffer onto the screen.
+
+}
+
+void city() {
 
 	glBegin(GL_QUADS);
 	glColor3f(0.95, 0.95, 0.95);
@@ -130,18 +120,22 @@ void display() {
 	glVertex2f(1.0f, -0.6f);
 	glEnd();
 
-	DrawCircle(0.0f, 1.0f, 1.0f, -1.58f, 0.16f, 0.3f, -0.4f, -0.6f);
+	glutSwapBuffers(); // Required to copy color buffer onto the screen.
 
-	DrawCircle(0.0f, 1.0f, 1.0f, 0.0f, 1.61f, 0.3f, 0.4f, -0.6f);
+}
 
-	DrawCircle(0.0f, 1.0f, 1.0f, -1.58f, 1.8f, 0.4f, 0.0f, -0.3f);
+
+void road() {
+
+	glClearColor(0.73, 0.87, 0.98, 0);  // (In fact, this is the default.)
 
 	glBegin(GL_QUADS);
-	glColor3f(0.0f, 1.0f, 1.0f);
-	glVertex2f(-0.4f, -0.6f);
-	glVertex2f(-0.4f, -0.3f);
-	glVertex2f(0.4f, -0.3f);
-	glVertex2f(0.4f, -0.6f);
+	glColor3f(0.7, 0.7, 0.7);
+	glVertex2f(-1.0f, -1.0f);
+	glVertex2f(1.0f, -1.0f);
+	glVertex2f(1.0f, -0.6f);
+	glVertex2f(-1.0f, -0.6f);
+	glEnd();
 
 	float leftest = -0.9;
 	float uppest = -0.8;
@@ -166,25 +160,54 @@ void display() {
 		leftest = leftest + 0.4;
 	}
 
+	glutSwapBuffers(); // Required to copy color buffer onto the screen.
+
+}
+
+void car() {
+
+	glClearColor(0.73, 0.87, 0.98, 0);  // (In fact, this is the default.)
+
+	DrawCircle(0.0f, 1.0f, 1.0f, -1.58f, 0.16f, 0.3f, -0.4f, -0.6f);
+	DrawCircle(0.0f, 1.0f, 1.0f, 0.0f, 1.61f, 0.3f, 0.4f, -0.6f);
+	DrawCircle(0.0f, 1.0f, 1.0f, -1.58f, 1.8f, 0.4f, 0.0f, -0.3f);
+
+	glBegin(GL_QUADS);
+	glColor3f(0.0f, 1.0f, 1.0f);
+	glVertex2f(-0.4f, -0.6f);
+	glVertex2f(-0.4f, -0.3f);
+	glVertex2f(0.4f, -0.3f);
+	glVertex2f(0.4f, -0.6f);
 
 	glEnd();
 
 	DrawCircle(0.0f, 0.0f, 0.0f, 1.0f, 360.1f, 0.15f, -0.4f, -0.6f);
-
 	DrawCircle(0.0f, 0.0f, 0.0f, 1.0f, 360.1f, 0.15f, 0.4f, -0.6f);
 
 	glutSwapBuffers(); // Required to copy color buffer onto the screen.
 
 }
 
-/* Main function: GLUT runs as a console application starting at main()  */
-int main(int argc, char** argv) {
-    glutInit(&argc, argv);          // Initialize GLUT
-    glutInitWindowSize(800, 800);   // Set the window's initial width & height
-    glutInitWindowPosition(50, 50); // Position the window's initial top-left corner
-    glutCreateWindow("Tugas 2 OpenGL");  // Create window with the given title
-    glutDisplayFunc(display);       // Register callback handler for window re-paint event
-    initGL();                       // Our own OpenGL initialization
-    glutMainLoop();                 // Enter the event-processing loop
-    return 0;
+void display() {
+
+	sky();
+	road();
+	city();
+	car();
+
+}
+
+int main(int argc, char** argv) {  // Initialize GLUT and 
+
+	glutInit(&argc, argv);
+	glutInitDisplayMode(GLUT_SINGLE);    // Use single color buffer and no depth buffer.
+	glutInitWindowSize(600, 600);         // Size of display area, in pixels.
+	glutInitWindowPosition(100, 100);     // Location of window in screen coordinates.
+	glutCreateWindow("GL Asoy Geboy"); // Parameter is window title.
+	glutDisplayFunc(display);            // Called when the window needs to be redrawn.
+
+	glutMainLoop(); // Run the event loop!  This function does not return.
+					// Program ends when user closes the window.
+	return 0;
+
 }
