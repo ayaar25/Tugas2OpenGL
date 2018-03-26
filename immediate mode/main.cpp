@@ -128,6 +128,7 @@ void car() {
 }
 
 float _translationDistance = 0.0f;
+float cityBlue = 0.95f;
 
 void road() {
 
@@ -168,130 +169,102 @@ void road() {
 
 }
 
-float cityBlue = 0.95f;
-
 void city() {
 
 	/**** CITY ****/
 	glPushMatrix();
-	glTranslatef(0.0f, 0.0f, 0.0f);
-	glBegin(GL_QUADS);
-	glColor3f(0.95, 0.95, cityBlue);
-	glVertex2f(-4.0f, -2.0f);
-	glVertex2f(-4.0f, 0.4f);
-	glVertex2f(-3.2f, 0.4f);
-	glVertex2f(-3.2f, -2.0f);
-	glEnd();
-	glPopMatrix();
+	glTranslatef(_translationDistance, 0.0f, 0.0f);
+	float jarak = 0.0;
+	for (int i = 0; i <= 1; i++) {
+		glBegin(GL_QUADS);
+		glColor3f(0.95, 0.95, cityBlue);
+		glVertex2f(-4.0f + jarak, -2.0f);
+		glVertex2f(-4.0f + jarak, 0.4f);
+		glVertex2f(-3.2f + jarak, 0.4f);
+		glVertex2f(-3.2f + jarak, -2.0f);
+		glEnd();
 
-	glPushMatrix();
-	glTranslatef(0.0f, 0.0f, 0.0f);
-	glBegin(GL_QUADS);
-	glColor3f(0.95, 0.95, cityBlue);
-	glVertex2f(-3.2f, -2.0f);
-	glVertex2f(-3.2f, 0.0f);
-	glVertex2f(-2.4f, 0.0f);
-	glVertex2f(-2.4f, -2.0f);
-	glEnd();
-	glPopMatrix();
+		glBegin(GL_QUADS);
+		glColor3f(0.95, 0.95, cityBlue);
+		glVertex2f(-3.2f + jarak, -2.0f);
+		glVertex2f(-3.2f + jarak, 0.0f);
+		glVertex2f(-2.4f + jarak, 0.0f);
+		glVertex2f(-2.4f + jarak, -2.0f);
+		glEnd();
 
-	glPushMatrix();
-	glTranslatef(0.0f, 0.0f, 0.0f);
-	glBegin(GL_QUADS);
-	glColor3f(0.95, 0.95, cityBlue);
-	glVertex2f(-2.4f, -2.0f);
-	glVertex2f(-2.4f, 2.4f);
-	glVertex2f(-1.6f, 3.2f);
-	glVertex2f(-1.6f, -2.0f);
-	glEnd();
-	glPopMatrix();
+		glBegin(GL_QUADS);
+		glColor3f(0.95, 0.95, cityBlue);
+		glVertex2f(-2.4f + jarak, -2.0f);
+		glVertex2f(-2.4f + jarak, 2.4f);
+		glVertex2f(-1.6f + jarak, 3.2f);
+		glVertex2f(-1.6f + jarak, -2.0f);
+		glEnd();
 
-	glPushMatrix();
-	glTranslatef(0.0f, 0.0f, 0.0f);
-	glBegin(GL_QUADS);
-	glColor3f(0.95, 0.95, cityBlue);
-	glVertex2f(-1.6f, -2.0f);
-	glVertex2f(-1.6f, 0.8f);
-	glVertex2f(-0.8f, 0.8f);
-	glVertex2f(-0.8f, -2.0f);
-	glEnd();
-	glPopMatrix();
+		glBegin(GL_QUADS);
+		glColor3f(0.95, 0.95, cityBlue);
+		glVertex2f(-1.6f + jarak, -2.0f);
+		glVertex2f(-1.6f + jarak, 0.8f);
+		glVertex2f(-0.8f + jarak, 0.8f);
+		glVertex2f(-0.8f + jarak, -2.0f);
+		glEnd();
 
-	glPushMatrix();
-	glTranslatef(0.0f, 0.0f, 0.0f);
-	glBegin(GL_QUADS);
-	glColor3f(0.95, 0.95, cityBlue);
-	glVertex2f(-0.8f, -2.0f);
-	glVertex2f(-0.8f, 2.0f);
-	glVertex2f(-0.0f, 1.6f);
-	glVertex2f(-0.0f, -2.0f);
-	glEnd();
-	glPopMatrix();
+		glBegin(GL_QUADS);
+		glColor3f(0.95, 0.95, cityBlue);
+		glVertex2f(-0.8f + jarak, -2.0f);
+		glVertex2f(-0.8f + jarak, 2.0f);
+		glVertex2f(-0.0f + jarak, 1.6f);
+		glVertex2f(-0.0f + jarak, -2.0f);
+		glEnd();
 
-	glPushMatrix();
-	glTranslatef(0.0f, 0.0f, 0.0f);
-	glBegin(GL_QUADS);
-	glColor3f(0.95, 0.95, cityBlue);
-	glVertex2f(-0.8f, -2.0f);
-	glVertex2f(-0.8f, 1.2);
-	glVertex2f(-0.0f, 1.2f);
-	glVertex2f(-0.0f, -2.0f);
-	glEnd();
-	glPopMatrix();
+		glBegin(GL_QUADS);
+		glColor3f(0.95, 0.95, cityBlue);
+		glVertex2f(-0.8f + jarak, -2.0f);
+		glVertex2f(-0.8f + jarak, 1.2);
+		glVertex2f(-0.0f + jarak, 1.2f);
+		glVertex2f(-0.0f + jarak, -2.0f);
+		glEnd();
 
-	glPushMatrix();
-	glTranslatef(0.0f, 0.0f, 0.0f);
-	glBegin(GL_QUADS);
-	glColor3f(0.95, 0.95, cityBlue);
-	glVertex2f(-0.0f, -2.0f);
-	glVertex2f(-0.0f, 0.8f);
-	glVertex2f(1.0f, 0.8f);
-	glVertex2f(1.0f, -2.0f);
-	glEnd();
-	glPopMatrix();
+		glBegin(GL_QUADS);
+		glColor3f(0.95, 0.95, cityBlue);
+		glVertex2f(-0.0f + jarak, -2.0f);
+		glVertex2f(-0.0f + jarak, 0.8f);
+		glVertex2f(1.0f + jarak, 0.8f);
+		glVertex2f(1.0f + jarak, -2.0f);
+		glEnd();
 
-	glPushMatrix();
-	glTranslatef(0.0f, 0.0f, 0.0f);
-	glBegin(GL_QUADS);
-	glColor3f(0.95, 0.95, cityBlue);
-	glVertex2f(1.0f, -2.0f);
-	glVertex2f(1.0f, 2.4f);
-	glVertex2f(1.6f, 2.4f);
-	glVertex2f(1.6f, -2.0f);
-	glEnd();
-	glPopMatrix();
+		glBegin(GL_QUADS);
+		glColor3f(0.95, 0.95, cityBlue);
+		glVertex2f(1.0f + jarak, -2.0f);
+		glVertex2f(1.0f + jarak, 2.4f);
+		glVertex2f(1.6f + jarak, 2.4f);
+		glVertex2f(1.6f + jarak, -2.0f);
+		glEnd();
 
-	glPushMatrix();
-	glTranslatef(0.0f, 0.0f, 0.0f);
-	glBegin(GL_QUADS);
-	glColor3f(0.95, 0.95, cityBlue);
-	glVertex2f(1.6f, -2.0f);
-	glVertex2f(1.6f, 0.0f);
-	glVertex2f(2.4f, 0.0f);
-	glVertex2f(2.4f, -2.0f);
-	glEnd();
-	glPopMatrix();
+		glBegin(GL_QUADS);
+		glColor3f(0.95, 0.95, cityBlue);
+		glVertex2f(1.6f + jarak, -2.0f);
+		glVertex2f(1.6f + jarak, 0.0f);
+		glVertex2f(2.4f + jarak, 0.0f);
+		glVertex2f(2.4f + jarak, -2.0f);
+		glEnd();
 
-	glPushMatrix();
-	glTranslatef(0.0f, 0.0f, 0.0f);
-	glBegin(GL_QUADS);
-	glColor3f(0.95, 0.95, cityBlue);
-	glVertex2f(2.4f, -2.0f);
-	glVertex2f(2.4f, 1.6f);
-	glVertex2f(3.2f, 2.4f);
-	glVertex2f(3.2f, -2.0f);
-	glEnd();
-	glPopMatrix();
+		glBegin(GL_QUADS);
+		glColor3f(0.95, 0.95, cityBlue);
+		glVertex2f(2.4f + jarak, -2.0f);
+		glVertex2f(2.4f + jarak, 1.6f);
+		glVertex2f(3.2f + jarak, 2.4f);
+		glVertex2f(3.2f + jarak, -2.0f);
+		glEnd();
 
-	glPushMatrix();
-	glTranslatef(0.0f, 0.0f, 0.0f);
-	glBegin(GL_QUADS);
-	glColor3f(0.95, 0.95, cityBlue);
-	glVertex2f(3.2f, -2.0f);
-	glVertex2f(3.2f, 3.2f);
-	glVertex2f(4.0f, 3.2f);
-	glVertex2f(4.0f, -2.0f);
-	glEnd();
+		glBegin(GL_QUADS);
+		glColor3f(0.95, 0.95, cityBlue);
+		glVertex2f(3.2f + jarak, -2.0f);
+		glVertex2f(3.2f + jarak, 3.2f);
+		glVertex2f(4.0f + jarak, 3.2f);
+		glVertex2f(4.0f + jarak, -2.0f);
+		glEnd();
+		jarak += 8.0f;
+	}
 	glPopMatrix();
 
 }
@@ -312,7 +285,7 @@ void update(int value)
 	if (_translationDistance < -8.0f) {
 		_translationDistance = 0.0f;
 	}
-	_angle -= 0.2f;
+	_angle -= 1.0f;
 	if (_angle < 360) {
 		_angle += 360;
 	}
