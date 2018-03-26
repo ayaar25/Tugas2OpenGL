@@ -32,10 +32,14 @@ void handleResize(int w, int h)
 	gluPerspective(45.0, (double)w / (double)h, 1.0, 200.0);
 }
 
+float skyRed = 0.73f;
+float skyGreen = 0.87f;
+float skyBlue = 1.0f;
+
 void init() {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-	glClearColor(0.73, 0.87, 0.98, 0);  // (In fact, this is the default.)
+	glClearColor(skyRed, skyGreen, skyBlue, 0);  // (In fact, this is the default.)
 
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
@@ -164,13 +168,15 @@ void road() {
 
 }
 
+float cityBlue = 0.95f;
+
 void city() {
 
 	/**** CITY ****/
 	glPushMatrix();
 	glTranslatef(0.0f, 0.0f, 0.0f);
 	glBegin(GL_QUADS);
-	glColor3f(0.95, 0.95, 0.95);
+	glColor3f(0.95, 0.95, cityBlue);
 	glVertex2f(-4.0f, -2.0f);
 	glVertex2f(-4.0f, 0.4f);
 	glVertex2f(-3.2f, 0.4f);
@@ -181,7 +187,7 @@ void city() {
 	glPushMatrix();
 	glTranslatef(0.0f, 0.0f, 0.0f);
 	glBegin(GL_QUADS);
-	glColor3f(0.95, 0.95, 0.95);
+	glColor3f(0.95, 0.95, cityBlue);
 	glVertex2f(-3.2f, -2.0f);
 	glVertex2f(-3.2f, 0.0f);
 	glVertex2f(-2.4f, 0.0f);
@@ -192,7 +198,7 @@ void city() {
 	glPushMatrix();
 	glTranslatef(0.0f, 0.0f, 0.0f);
 	glBegin(GL_QUADS);
-	glColor3f(0.95, 0.95, 0.95);
+	glColor3f(0.95, 0.95, cityBlue);
 	glVertex2f(-2.4f, -2.0f);
 	glVertex2f(-2.4f, 2.4f);
 	glVertex2f(-1.6f, 3.2f);
@@ -203,7 +209,7 @@ void city() {
 	glPushMatrix();
 	glTranslatef(0.0f, 0.0f, 0.0f);
 	glBegin(GL_QUADS);
-	glColor3f(0.95, 0.95, 0.95);
+	glColor3f(0.95, 0.95, cityBlue);
 	glVertex2f(-1.6f, -2.0f);
 	glVertex2f(-1.6f, 0.8f);
 	glVertex2f(-0.8f, 0.8f);
@@ -214,7 +220,7 @@ void city() {
 	glPushMatrix();
 	glTranslatef(0.0f, 0.0f, 0.0f);
 	glBegin(GL_QUADS);
-	glColor3f(0.95, 0.95, 0.95);
+	glColor3f(0.95, 0.95, cityBlue);
 	glVertex2f(-0.8f, -2.0f);
 	glVertex2f(-0.8f, 2.0f);
 	glVertex2f(-0.0f, 1.6f);
@@ -225,7 +231,7 @@ void city() {
 	glPushMatrix();
 	glTranslatef(0.0f, 0.0f, 0.0f);
 	glBegin(GL_QUADS);
-	glColor3f(0.95, 0.95, 0.95);
+	glColor3f(0.95, 0.95, cityBlue);
 	glVertex2f(-0.8f, -2.0f);
 	glVertex2f(-0.8f, 1.2);
 	glVertex2f(-0.0f, 1.2f);
@@ -236,7 +242,7 @@ void city() {
 	glPushMatrix();
 	glTranslatef(0.0f, 0.0f, 0.0f);
 	glBegin(GL_QUADS);
-	glColor3f(0.95, 0.95, 0.95);
+	glColor3f(0.95, 0.95, cityBlue);
 	glVertex2f(-0.0f, -2.0f);
 	glVertex2f(-0.0f, 0.8f);
 	glVertex2f(1.0f, 0.8f);
@@ -247,7 +253,7 @@ void city() {
 	glPushMatrix();
 	glTranslatef(0.0f, 0.0f, 0.0f);
 	glBegin(GL_QUADS);
-	glColor3f(0.95, 0.95, 0.95);
+	glColor3f(0.95, 0.95, cityBlue);
 	glVertex2f(1.0f, -2.0f);
 	glVertex2f(1.0f, 2.4f);
 	glVertex2f(1.6f, 2.4f);
@@ -258,7 +264,7 @@ void city() {
 	glPushMatrix();
 	glTranslatef(0.0f, 0.0f, 0.0f);
 	glBegin(GL_QUADS);
-	glColor3f(0.95, 0.95, 0.95);
+	glColor3f(0.95, 0.95, cityBlue);
 	glVertex2f(1.6f, -2.0f);
 	glVertex2f(1.6f, 0.0f);
 	glVertex2f(2.4f, 0.0f);
@@ -269,7 +275,7 @@ void city() {
 	glPushMatrix();
 	glTranslatef(0.0f, 0.0f, 0.0f);
 	glBegin(GL_QUADS);
-	glColor3f(0.95, 0.95, 0.95);
+	glColor3f(0.95, 0.95, cityBlue);
 	glVertex2f(2.4f, -2.0f);
 	glVertex2f(2.4f, 1.6f);
 	glVertex2f(3.2f, 2.4f);
@@ -280,7 +286,7 @@ void city() {
 	glPushMatrix();
 	glTranslatef(0.0f, 0.0f, 0.0f);
 	glBegin(GL_QUADS);
-	glColor3f(0.95, 0.95, 0.95);
+	glColor3f(0.95, 0.95, cityBlue);
 	glVertex2f(3.2f, -2.0f);
 	glVertex2f(3.2f, 3.2f);
 	glVertex2f(4.0f, 3.2f);
@@ -298,6 +304,8 @@ void display() {
 	glutSwapBuffers();
 }
 
+bool isDay = true;
+
 void update(int value)
 {
 	_translationDistance -= 0.05f;
@@ -307,6 +315,24 @@ void update(int value)
 	_angle -= 0.2f;
 	if (_angle < 360) {
 		_angle += 360;
+	}
+	if (isDay) {
+		skyRed -= 0.0073;
+		skyGreen -= 0.0087;
+		skyBlue -= 0.01;
+		cityBlue -= 0.0095;
+		if (skyBlue <= 0) {
+			isDay = false;
+		}
+	}
+	else {
+		skyRed += 0.0073;
+		skyGreen += 0.0087;
+		skyBlue += 0.01;
+		cityBlue += 0.0095;
+		if (skyBlue >= 1.0) {
+			isDay = true;
+		}
 	}
 	glutPostRedisplay();
 	glutTimerFunc(25, update, 0);
