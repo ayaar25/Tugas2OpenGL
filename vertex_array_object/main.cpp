@@ -1,3 +1,5 @@
+#include <windows.h>
+#include <iostream>
 #include <stdio.h>
 #include <stdlib.h>
 #include <GL/glew.h>
@@ -18,7 +20,6 @@ int main( void )
 	initGLFW();
 
 	GLuint programID = LoadShaders("VertexShader.vertexshader", "FragmentShader.fragmentshader");
-	GLuint programID2 = LoadShaders("VertexShaderTransformation.vertexshader", "FragmentShader.fragmentshader");
 
 	// Dark blue background
 	glClearColor(0.73, 0.87, 0.98, 0);
@@ -27,7 +28,22 @@ int main( void )
 	glGenVertexArrays(1, &VertexArrayID);
 	glBindVertexArray(VertexArrayID);
 
-	GLfloat vertex_and_color_buffer[] = {
+	GLfloat background_buffer[] = {
+		1, 1,
+		0.89, 0.95, 0.99,
+		1, -1,
+		0.89, 0.95, 0.99,
+		-1, 1,
+		0.89, 0.95, 0.99,
+		-1, 1,
+		0.89, 0.95, 0.99,
+		1, -1,
+		0.89, 0.95, 0.99,
+		-1, -1,
+		0.89, 0.95, 0.99, 
+	};
+
+	GLfloat building_buffer[] = {
 		// Right most building
 		1, 0.85,
 		0.46, 0.46, 0.46,
@@ -168,6 +184,24 @@ int main( void )
 		-1, 0.25,
 		0.46, 0.46, 0.46,
 
+		//Base building
+		-1, 0.25,
+		0.46, 0.46, 0.46,
+		1, 0.25,
+		0.46, 0.46, 0.46,
+		1, -1,
+		0.46, 0.46, 0.46,
+		1, -1,
+		0.46, 0.46, 0.46,
+		-1, 0.25,
+		0.46, 0.46, 0.46,
+		-1, -1,
+		0.46, 0.46, 0.46,
+	};
+
+	std::cout << "Length of Building Array = " << (sizeof(building_buffer)/sizeof(*building_buffer)) << std::endl;
+
+	GLfloat road_buffer[] = {
 		//Road
 		1, -0.6,
 		0.38, 0.38, 0.38,
@@ -182,6 +216,122 @@ int main( void )
 		-1, -0.6,
 		0.38, 0.38, 0.38,
 
+		//Road Line
+		1, -0.65,
+		1, 1, 1,
+		0.85, -0.65,
+		1, 1, 1,
+		1, -0.7,
+		1, 1, 1,
+		1, -0.7,
+		1, 1, 1,
+		0.85, -0.7,
+		1, 1, 1,
+		0.85, -0.65,
+		1, 1, 1,
+
+		//Road Line
+		0.7, -0.65,
+		1, 1, 1,
+		0.55, -0.65,
+		1, 1, 1,
+		0.7, -0.7,
+		1, 1, 1,
+		0.7, -0.7,
+		1, 1, 1,
+		0.55, -0.7,
+		1, 1, 1,
+		0.55, -0.65,
+		1, 1, 1,
+
+		//Road Line
+		0.4, -0.65,
+		1, 1, 1,
+		0.25, -0.65,
+		1, 1, 1,
+		0.4, -0.7,
+		1, 1, 1,
+		0.4, -0.7,
+		1, 1, 1,
+		0.25, -0.7,
+		1, 1, 1,
+		0.25, -0.65,
+		1, 1, 1,
+
+		//Road Line
+		0.1, -0.65,
+		1, 1, 1,
+		-0.05, -0.65,
+		1, 1, 1,
+		0.1, -0.7,
+		1, 1, 1,
+		0.1, -0.7,
+		1, 1, 1,
+		-0.05, -0.7,
+		1, 1, 1,
+		-0.05, -0.65,
+		1, 1, 1,
+
+		//Road Line
+		-0.2, -0.65,
+		1, 1, 1,
+		-0.35, -0.65,
+		1, 1, 1,
+		-0.2, -0.7,
+		1, 1, 1,
+		-0.2, -0.7,
+		1, 1, 1,
+		-0.35, -0.7,
+		1, 1, 1,
+		-0.35, -0.65,
+		1, 1, 1,
+
+		//Road Line
+		-0.5, -0.65,
+		1, 1, 1,
+		-0.65, -0.65,
+		1, 1, 1,
+		-0.5, -0.7,
+		1, 1, 1,
+		-0.5, -0.7,
+		1, 1, 1,
+		-0.65, -0.7,
+		1, 1, 1,
+		-0.65, -0.65,
+		1, 1, 1,
+
+		//Road Line
+		-0.8, -0.65,
+		1, 1, 1,
+		-0.95, -0.65,
+		1, 1, 1,
+		-0.8, -0.7,
+		1, 1, 1,
+		-0.8, -0.7,
+		1, 1, 1,
+		-0.95, -0.7,
+		1, 1, 1,
+		-0.95, -0.65,
+		1, 1, 1,
+
+		//Road Line
+		-1.1, -0.65,
+		1, 1, 1,
+		-1.25, -0.65,
+		1, 1, 1,
+		-1.1, -0.7,
+		1, 1, 1,
+		-1.1, -0.7,
+		1, 1, 1,
+		-1.25, -0.7,
+		1, 1, 1,
+		-1.25, -0.65,
+		1, 1, 1,
+	};
+
+	std::cout << "Length of Road Array = " << (sizeof(road_buffer) / sizeof(*road_buffer)) << std::endl;
+
+	GLfloat car_buffer[] = {
 		//Car - Top
 		0.25, 0.2,
 		0.94, 0.6, 0.6,
@@ -212,70 +362,137 @@ int main( void )
 
 		//Car - wheel front
 		0.3, -0.3,
-		0.94, 0.6, 0.6,
+		0.9, 0.45, 0.45,
 		0.15, -0.3,
-		0.94, 0.6, 0.6,
+		0.9, 0.45, 0.45,
 		0.3, -0.6,
-		0.94, 0.6, 0.6,
+		0.9, 0.45, 0.45,
 		0.3, -0.6,
-		0.94, 0.6, 0.6,
+		0.9, 0.45, 0.45,
 		0.15, -0.6,
-		0.94, 0.6, 0.6,
+		0.9, 0.45, 0.45,
 		0.15, -0.3,
-		0.94, 0.6, 0.6,
+		0.9, 0.45, 0.45,
 
 		//Car - wheel back
 		-0.3, -0.3,
-		0.94, 0.6, 0.6,
+		0.9, 0.45, 0.45,
 		-0.15, -0.3,
-		0.94, 0.6, 0.6,
+		0.9, 0.45, 0.45,
 		-0.3, -0.6,
-		0.94, 0.6, 0.6,
+		0.9, 0.45, 0.45,
 		-0.3, -0.6,
-		0.94, 0.6, 0.6,
+		0.9, 0.45, 0.45,
 		-0.15, -0.6,
-		0.94, 0.6, 0.6,
+		0.9, 0.45, 0.45,
 		-0.15, -0.3,
-		0.94, 0.6, 0.6,
+		0.9, 0.45, 0.45,
 	};
+
+	std::cout << "Length of Car Array = " << (sizeof(car_buffer) / sizeof(*car_buffer)) << std::endl;
 
 	GLuint vertexbuffer;
 	glGenBuffers(1, &vertexbuffer);
 	glBindBuffer(GL_ARRAY_BUFFER, vertexbuffer);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(vertex_and_color_buffer), vertex_and_color_buffer, GL_STATIC_DRAW);
+
+	GLfloat delta = 0.01;
+	int rise = 0;
+	int timeCounter = 0;
 
 	do{
+		Sleep(0.5);
+
+		if(timeCounter == 1500){
+			rise = (rise == 1)?0:1;
+			timeCounter = 0;
+		}
 
 		// Clear the screen
 		glClear( GL_COLOR_BUFFER_BIT );
+		// Run shader
+		glUseProgram(programID);
 
 		// 1rst attribute buffer : vertices
 		glEnableVertexAttribArray(0);
 		glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, sizeof(float)*5, (void*)0);
-		//  1: attribute 0. No particular reason for 0, but must match the layout in the shader.
-		//  2: size, 3: type, 4: normalized?, 5: stride, 6:  array buffer offset
-
 		// 2nd attribute buffer : color
 		glEnableVertexAttribArray(1);
 		glVertexAttribPointer(1,3,GL_FLOAT, GL_FALSE, sizeof(float) * 5, (char*)(sizeof(float)*2));
+		//  1: layout in the shader, declared in glEnableVertexAttribArray.
+		//  2: size, 3: type, 4: normalized?, 5: stride, 6:  array buffer offset
 
-		// Draw the buffer
-		glUseProgram(programID);
-		glDrawArrays(GL_TRIANGLES, 0, 13*6); // Start from vertex 0, (number square * num vertx in square)
-		
-		glUseProgramObjectARB(0); // Disable Shader
-		glDrawArrays(GL_TRIANGLES, 13*6, 6);
-		
-		for (int i = 0; i < 10; i++) {
-			glUseProgram(programID2);
-			glDrawArrays(GL_TRIANGLES, 14 * 6, 6);
+		if (rise == 1) {
+			background_buffer[2] += delta*0.1; background_buffer[3] += delta*0.1; background_buffer[4] += delta*0.1;
+			background_buffer[12] += delta*0.1; background_buffer[13] += delta*0.1; background_buffer[14] += delta*0.1;
+			background_buffer[17] += delta*0.1; background_buffer[18] += delta*0.1; background_buffer[19] += delta*0.1;
 		}
+		else {
+			background_buffer[2] -= delta*0.1; background_buffer[3] -= delta*0.1; background_buffer[4] -= delta*0.1;
+			background_buffer[12] -= delta*0.1; background_buffer[13] -= delta*0.1; background_buffer[14] -= delta*0.1;
+			background_buffer[17] -= delta*0.1; background_buffer[18] -= delta*0.1; background_buffer[19] -= delta*0.1;
+		}
+
+		// Change Buffer to background
+		glBufferData(GL_ARRAY_BUFFER, sizeof(background_buffer), background_buffer, GL_STATIC_DRAW);
+
+		// Draw background
+		glDrawArrays(GL_TRIANGLES, 0, 1 * 6); // Start from vertex 0, (number square * num vertx in square)
+
+		int i = 0;
+		int count = 0;
+		//stop until 297
+		while (i < 300) {
+			if (count % 3 == 0 && building_buffer[i] <= -1 && building_buffer[i + 5] <= -1 && building_buffer[i + 10] <= -1) {
+				building_buffer[i] += 2.25;
+				building_buffer[i+5] += 2.25;
+				building_buffer[i+10] += 2.25;
+			}
+			building_buffer[i] -= delta;
+			i += 5;
+			count++;
+		}
+
+		// Change Buffer to Buildings
+		glBufferData(GL_ARRAY_BUFFER, sizeof(building_buffer), building_buffer, GL_STATIC_DRAW);
+
+		// Draw buildings
+		glDrawArrays(GL_TRIANGLES, 0, 11*6); // Start from vertex 0, (number square * num vertx in square)
+
+		i = 30;
+		count = 0;
+		//stop until 267
+		while (i < 270) {
+			if (count % 3 == 0 && road_buffer[i] <= -1 && road_buffer[i + 5] <= -1 && road_buffer[i + 10] <= -1) {
+				road_buffer[i] += 2.15;
+				road_buffer[i + 5] += 2.15;
+				road_buffer[i + 10] += 2.15;
+			}
+			road_buffer[i] -= delta;
+			i += 5;
+			count++;
+		}
+											 
+		// Change Buffer to Road
+		glBufferData(GL_ARRAY_BUFFER, sizeof(road_buffer), road_buffer, GL_STATIC_DRAW);
+
+		// Draw road
+		glDrawArrays(GL_TRIANGLES, 0, 8 * 6); // Start from vertex 0, (number square * num vertx in square)
+
+		// Change buffer to car
+		glBufferData(GL_ARRAY_BUFFER, sizeof(car_buffer), car_buffer, GL_STATIC_DRAW);
+
+		// Draw Car
+		glDrawArrays(GL_TRIANGLES, 0, 4*6);
+		// glUseProgramObjectARB(0); // Disable Shader, just in case needed
+		
 		glDisableVertexAttribArray(0);
 		glDisableVertexAttribArray(1);
 
 		// Swap buffers
 		glfwSwapBuffers(window);
 		glfwPollEvents();
+
+		timeCounter++;
 
 	} // Check if the ESC key was pressed or the window was closed
 	while( glfwGetKey(window, GLFW_KEY_ESCAPE ) != GLFW_PRESS &&
@@ -285,7 +502,6 @@ int main( void )
 	glDeleteBuffers(1, &vertexbuffer);
 	glDeleteVertexArrays(1, &VertexArrayID);
 	glDeleteProgram(programID);
-	glDeleteProgram(programID2);
 
 	// Close OpenGL window and terminate GLFW
 	glfwTerminate();
